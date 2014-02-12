@@ -54,6 +54,8 @@
 	<meta name="text:Byline" content="My Geek Journal" />
 	<meta name="text:Search URL" content="www.domain.com" />
 	
+	<meta name="color:Header Background" content="" />
+	
 	<!-- START For Facebook Open Graph -->
 	<meta property="fb:admins" content="{text:Facebook Admin Username}"/>
 	<meta property="fb:app_id" content="{text:Facebook App ID}"/>
@@ -94,6 +96,13 @@
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
 	
 	<script src="http://www.google.com/jsapi?key={text:Google API Key}" type="text/javascript"></script>
+
+    <style type="text/css">
+        header[role=banner] {
+	        background-color: {color:Header Background}; 
+        }
+    </style>
+
 	<style type="text/css">{CustomCSS}</style>
 	
 </head>
