@@ -34,6 +34,8 @@
 	<meta name="if:Show Related Posts" content="0" />
 	<meta name="if:Show Latest Tweets" content="0" />
 	<meta name="if:Show FB Comment Count" content="0" />	
+	<meta name="if:Show Disqus Comments" content="0" />
+	<meta name="text:Disqus Username" content="" />
 	<meta name="text:Facebook Admin Username" content="" />
 	<meta name="text:Facebook Username" content="" />
 	<meta name="text:Facebook App ID" content="" />	
@@ -184,7 +186,9 @@
 					{block:Date}{ShortMonth} {DayOfMonth}, {Year}{/block:Date}
 						</time>
 						
-						{block:Date}| <a href="{Permalink}#disqus_thread">Comments</a>{/block:Date}
+  					{block:IfShowDisqusComments}
+  						{block:Date}| <a href="{Permalink}#disqus_thread">Comments</a>{/block:Date}
+  					{/block:IfShowDisqusComments}
 						
 					</p>
 			</header>
@@ -314,8 +318,10 @@
 		{/block:PermalinkPage}
 		{/block:Date}
 		
+  	    {block:IfShowDisqusComments}
 					<script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>
 		
+  	    {/block:IfShowDisqusComments}
 		</article>
   
   	{block:Date}
@@ -447,25 +453,27 @@
 </script>
 {/block:IfShowPinterestButtons}
 
-			<script type="text/javascript">
-			  /**
-			    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
-			    */
-			  (function() {
-			   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			   dsq.src = 'http://joshkerr.disqus.com/embed.js';
-			   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			  })();
-			</script>
-			
-			<script type="text/javascript">
-			var disqus_shortname = 'joshkerr';
-			(function () {
-			  var s = document.createElement('script'); s.async = true;
-			  s.src = 'http://joshkerr.disqus.com/count.js';
-			  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-			}());
-			</script>
+{block:IfShowDisqusComments}
+	<script type="text/javascript">
+	  /**
+	    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+	    */
+	  (function() {
+	   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	   dsq.src = 'http://{text:Disqus Username}.disqus.com/embed.js';
+	   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+	</script>
+	
+	<script type="text/javascript">
+	var disqus_shortname = '{text:Disqus Username}';
+	(function () {
+	  var s = document.createElement('script'); s.async = true;
+	  s.src = 'http://{text:Disqus Username}.disqus.com/count.js';
+	  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+	</script>
+{/block:IfShowDisqusComments}
 
 </body>
 </html>
