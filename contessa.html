@@ -47,6 +47,7 @@
 	<meta name="text:Copyright" content="" />
 	<meta name="text:Google Analytics ID" content="" />
 	<meta name="image:Avatar" content="http://static.tumblr.com/zsdrhf0/WDqlywc23/ft477.png" />	
+	<meta name="if:Show Circle Avatar" content="1">	
 	<meta name="text:Num of Tweets" content="2" />
 	<meta name="text:Num of Featured" content="5" />
 	<meta name="text:Num of Recent" content="10" />
@@ -101,6 +102,23 @@
         header[role=banner] {
 	        background-color: {color:Header Background}; 
         }
+      {block:IfShowCircleAvatar}
+        .img-circular {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            background:url("{image:Avatar}")no-repeat;
+            margin-right: 10px;
+        }
+      {/block:IfShowCircleAvatar}
+      {block:IfNotShowCircleAvatar}
+        img {
+          margin-right: 10px;
+        }
+      {/block:IfNotShowCircleAvatar}
     </style>
 
 	<style type="text/css">{CustomCSS}</style>
@@ -136,7 +154,12 @@
 
 <header role="banner">
   <hgroup>
-      <img src="{image:Avatar}" id="avatar" align="left" alt="avatar" />
+    {block:IfShowCircleAvatar}
+      <div class="img-circular"></div>
+  	{/block:IfShowCircleAvatar}
+  	{block:IfNotShowCircleAvatar}
+  	  <img src="{image:Avatar}" id="avatar" align="left" alt="avatar" />
+    {/block:IfNotShowCircleAvatar}
 	  <h1><a href="/">{Title}</a></h1>
 	  <h2>{text:Byline}</h2>
   </hgroup>
