@@ -52,7 +52,7 @@
 	<meta name="text:Num of Featured" content="5" />
 	<meta name="text:Num of Recent" content="10" />
 	<meta name="text:Num of Related" content="10" />
-	<meta name="text:Byline" content="My Geek Journal" />
+	<meta name="text:About" content="A tumblr blog in the style of Octopress" />
 	<meta name="text:Search URL" content="www.domain.com" />
 	
 	<meta name="color:Header Background" content="" />
@@ -161,7 +161,7 @@
   	  <img src="{image:Avatar}" id="avatar" align="left" alt="avatar" />
     {/block:IfNotShowCircleAvatar}
 	  <h1><a href="/">{Title}</a></h1>
-	  <h2>{text:Byline}</h2>
+	  <h2>{Description}</h2>
   </hgroup>
 </header>
 
@@ -394,7 +394,7 @@
   
 	    <section>	
 			<h1>About</h1>
-			<p>{Description}</p>
+			<p>{text:About}</p>
 			{block:IfShowFacebookSubscribeButton}
 			<div class="fb-subscribe" data-href="https://www.facebook.com/{text:Facebook Username}" data-layout="button_count" data-show-faces="false" data-width="100"></div>
 			{/block:IfShowFacebookSubscribeButton}				
